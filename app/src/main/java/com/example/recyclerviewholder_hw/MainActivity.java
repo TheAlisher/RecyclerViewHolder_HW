@@ -10,7 +10,9 @@ import android.os.Bundle;
 public class MainActivity extends AppCompatActivity implements onClick {
 
     static String TEXT_KEY = "text_key";
-    public static final int MAIN_2_ACTIVITY = 15;
+    public static final int REQUEST_CODE = 16;
+
+    MainAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -18,8 +20,10 @@ public class MainActivity extends AppCompatActivity implements onClick {
         setContentView(R.layout.activity_main);
 
         RecyclerView recyclerView = findViewById(R.id.recycler_view);
-        MainAdapter adapter = new MainAdapter();
+        adapter = new MainAdapter();
         recyclerView.setAdapter(adapter);
+
+        adapter.onClick = this;
 
     }
 
@@ -27,12 +31,14 @@ public class MainActivity extends AppCompatActivity implements onClick {
     public void onClick(StudentsFullInformation SFI) {
         Intent intent = new Intent(this, Main2Activity.class);
         intent.putExtra(TEXT_KEY, SFI);
-        startActivityForResult(intent, 15);
+        startActivityForResult(intent, REQUEST_CODE);
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-        StudentsFullInformation SFI = da.getSerializableExtra();
+        StudentsFullInformation SFI = (StudentsFullInformation) data.getSerializableExtra(Main2Activity.MAIN_2_ACTIVITY);
+        adapter.update(SFI);
+        adapter.notifyDataSetChanged();
     }
 }

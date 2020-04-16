@@ -29,10 +29,9 @@ public class MainAdapter extends RecyclerView.Adapter<MainViewHolder> {
 
     public void update(StudentsFullInformation SFI) {
         list.remove(SFI.getPosition());
-        list.add(SFI);
+        list.add(SFI.getPosition(), SFI);
         notifyDataSetChanged();
     }
-
 
     @NonNull
     @Override

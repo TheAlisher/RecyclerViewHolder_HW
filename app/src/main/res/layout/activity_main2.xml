@@ -6,16 +6,37 @@
     android:layout_height="match_parent"
     tools:context=".Main2Activity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+    <EditText
+        android:id="@+id/fullName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="изменить: ПОЛНОЕ ИМЯ"
+        android:textSize="30sp"
+        app:layout_constraintTop_toTopOf="parent"/>
+
+    <EditText
+        android:id="@+id/group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="изменить: ГРУППУ"
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@+id/fullName"/>
+
+    <EditText
+        android:id="@+id/grade"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="изменить: ОЦЕНКУ"
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@+id/group"/>
 
     <Button
-        android:id="@+id/change_button"
+        android:id="@+id/change_save_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="change"
+        android:text="Save"
         android:textSize="30sp"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintTop_toTopOf="@id/fullName"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
